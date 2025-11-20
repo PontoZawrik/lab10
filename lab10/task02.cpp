@@ -1,5 +1,7 @@
 #include "main.h"
 
+void task02_1(int[], int);
+
 void task02() {
 	const int n = 100;
 	int array[] = { 16, 78, 99, 6, -29, 19, -52, 65, -88, 51,
@@ -21,7 +23,7 @@ void task02() {
 		cin >> p;
 
 		switch (p) {
-		case 1: task02_1(); break;
+		case 1: task02_1(array, n); break;
 		case 2: task02(); break;
 
 		case -1: cout << "Выход из подпрограммы.\n"; break;
@@ -32,7 +34,13 @@ void task02() {
 	} while (p != -1);
 }
 
-void task02_1() {
+void task02_1(int array[], int size) {
+	double avg = 0;
 
+	for (int i = 0; i < size; i++) {
+		avg += array[i];
+	}
 
+	avg /= size;
+	cout << "average: " << avg << endl;
 }
