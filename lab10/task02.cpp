@@ -1,6 +1,7 @@
 #include "main.h"
 
-void task02_1(int[], int);
+void task02_1(int*, int);
+void task02_2(int*, int);
 
 void task02() {
 	const int n = 100;
@@ -24,7 +25,7 @@ void task02() {
 
 		switch (p) {
 		case 1: task02_1(array, n); break;
-		case 2: task02(); break;
+		case 2: task02_2(array, n); break;
 
 		case -1: cout << "Выход из подпрограммы.\n"; break;
 		default: cout << "Неверный номер.\n";
@@ -34,13 +35,36 @@ void task02() {
 	} while (p != -1);
 }
 
-void task02_1(int array[], int size) {
+void task02_1(int* array, int size) {
 	double avg = 0;
 
 	for (int i = 0; i < size; i++) {
-		avg += array[i];
+		avg += *(array + i);
 	}
 
 	avg /= size;
 	cout << "average: " << avg << endl;
+
+	return;
+}
+
+void task02_2(int* array, int size) {
+	const int n = 50, m = 2;
+	int matrix[n][m];
+	int* px = &matrix[0][0];
+
+	double avg = 0;
+
+	for (int i = 0; i < size; i++) {
+		*(px + i) = *(array + i);
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			avg += *(*(matrix + i) + j);
+		}
+		cout << "i = " << i << "; avg = " << avg / m << endl;
+	}
+
+	return;
 }
