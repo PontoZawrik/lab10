@@ -3,6 +3,7 @@
 void task02_1(int*, int);
 void task02_2(int*, int);
 void task02_3();
+void task02_4();
 
 void task02() {
 	const int n = 100;
@@ -28,6 +29,7 @@ void task02() {
 		case 1: task02_1(array, n); break;
 		case 2: task02_2(array, n); break;
 		case 3: task02_3(); break;
+		case 4: task02_4(); break;
 
 		case -1: cout << "Выход из подпрограммы.\n"; break;
 		default: cout << "Неверный номер.\n";
@@ -98,5 +100,28 @@ void task02_3() {
 
 	delete[] zArray;
 	
+	return;
+}
+
+void task02_4() {
+	const int n = 100;
+	char str[n];
+
+	cin.ignore();
+	cout << "Введите строку (до 100 символов): ";
+	cin.getline(str, n);
+
+	bool flag = true;
+	for (int i = 0; *(str + i) != '\0'; i++) {
+
+		if (*(str + i) != ' ' && flag) {
+			flag = false;
+			cout << (void*)(str + i) << endl;
+		}
+		else if (*(str + i) == ' ') {
+			flag = true;
+		}
+	}
+
 	return;
 }
