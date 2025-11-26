@@ -2,6 +2,7 @@
 
 void task02_1(int*, int);
 void task02_2(int*, int);
+void task02_3();
 
 void task02() {
 	const int n = 100;
@@ -26,6 +27,7 @@ void task02() {
 		switch (p) {
 		case 1: task02_1(array, n); break;
 		case 2: task02_2(array, n); break;
+		case 3: task02_3(); break;
 
 		case -1: cout << "Выход из подпрограммы.\n"; break;
 		default: cout << "Неверный номер.\n";
@@ -66,5 +68,35 @@ void task02_2(int* array, int size) {
 		cout << "i = " << i << "; avg = " << avg / m << endl;
 	}
 
+	return;
+}
+
+void task02_3() {
+	const int n = 10;
+	char array[n][n][n];
+	char* px = &array[0][0][0];
+
+	int m = 500, count = 0;
+	char** zArray = new char*[m];
+
+	for (int i = 0; i < (n * n * n); i++) {
+		*(px + i) = char(getRandomInt(65, 90));
+		cout << *(px + i) << endl;
+
+
+		if (*(px + i) == 'Z') {
+			zArray[count] = (px + i);
+			count++;
+		}
+	}
+
+	cout << endl;
+
+	for (int i = 0; i < count; i++) {
+		cout << (void*)zArray[i] << endl;
+	}
+
+	delete[] zArray;
+	
 	return;
 }
